@@ -53,8 +53,7 @@ public class MainActivity extends Activity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String scheme = request.getUrl().getScheme();
                 return !("https".equalsIgnoreCase(scheme)
-                        || "http".equalsIgnoreCase(scheme)
-                        || "https".equalsIgnoreCase(request.getUrl().getScheme()));
+                        || "http".equalsIgnoreCase(scheme));
             }
         });
         webView.setWebChromeClient(new WebChromeClient());
