@@ -8,6 +8,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.util.Log;
 
 import androidx.webkit.WebViewAssetLoader;
 
@@ -28,6 +29,8 @@ public class MainActivity extends Activity {
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        settings.setBlockNetworkLoads(false);
+        settings.setDatabaseEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setLoadsImagesAutomatically(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
@@ -36,7 +39,7 @@ public class MainActivity extends Activity {
         settings.setAllowContentAccess(true);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setMixedContentMode(WebSettings.MIXED_CONTENT_NEVER_ALLOW);
-        settings.setUserAgentString(settings.getUserAgentString() + " GTIAndroid/1.5.0");
+        settings.setUserAgentString(settings.getUserAgentString() + " GTIAndroid/1.5.1");
 
         CookieManager cookies = CookieManager.getInstance();
         cookies.setAcceptCookie(true);
@@ -56,7 +59,13 @@ public class MainActivity extends Activity {
                         || "http".equalsIgnoreCase(scheme));
             }
         });
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onConsoleMessage(android.webkit.ConsoleMessage message) {
+                Log.d("GTI-WebView", message.message() + " -- line " + message.lineNumber());
+                return true;
+            }
+        });
         webView.loadUrl("https://appassets.androidplatform.net/assets/index.html");
     }
 
