@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>Global Trader Intelligence</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#111a2b;--line:#243149;--muted:#91a0b8;--gold:#e7b85c;--green:#25c58a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f4f6fb;font-family:Arial,sans-serif}
+header{padding:22px 18px 16px;background:linear-gradient(135deg,#17243a,#0b1220);border-bottom:1px solid var(--line)}
+.eyebrow{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:bold}
+h1{font-size:23px;margin:8px 0 5px}p{color:var(--muted);font-size:13px;line-height:1.5;margin:4px 0}
+main{padding:14px;max-width:900px;margin:auto}.section{margin:18px 0}
+h2{font-size:16px;margin:0 0 10px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:14px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{font-size:11px;color:var(--muted)}.value{font-size:17px;font-weight:bold;margin-top:7px}
+.pill{display:inline-block;border:1px solid #36516d;border-radius:30px;padding:5px 9px;color:#b9c9df;font-size:10px}
+.widget{min-height:300px}.tradingview-widget-container{width:100%;min-height:300px}
+.note{font-size:11px;color:#8190a8}.refresh{float:right;background:#263750;border:1px solid #3a4e6b;color:white;padding:8px 11px;border-radius:8px}
+footer{text-align:center;padding:20px;color:#75839b;font-size:11px}
+</style>
+</head>
+<body>
+<header>
+ <div class="eyebrow">GLOBAL MARKETS • INTELLIGENCE</div>
+ <h1>Global Trader Intelligence</h1>
+ <p>One dashboard for the markets that move your trades.</p>
+ <div style="margin-top:12px"><span class="pill">LIVE WIDGETS • INTERNET REQUIRED</span></div>
+</header>
+<main>
+ <section class="section">
+  <button class="refresh" onclick="location.reload()">↻ Refresh</button>
+  <h2>Market snapshot</h2>
+  <p>Provider-powered market overview. Values and delays depend on exchange data permissions.</p>
+  <div class="card widget">
+   <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+    {"colorTheme":"dark","dateRange":"1D","showChart":true,"locale":"en","width":"100%","height":"420","isTransparent":true,"showSymbolLogo":true,"showFloatingTooltip":false,"tabs":[{"title":"Indices","symbols":[{"s":"NSE:NIFTY"},{"s":"NSE:BANKNIFTY"},{"s":"FOREXCOM:SPXUSD"},{"s":"NASDAQ:NDX"},{"s":"TVC:NI225"},{"s":"TVC:DXY"}]},{"title":"Commodities","symbols":[{"s":"TVC:GOLD"},{"s":"TVC:USOIL"},{"s":"NYMEX:NG1!"}]}]}
+    </script>
+   </div>
+  </div>
+ </section>
+ <section class="section">
+  <h2>Global market ticker</h2>
+  <div class="card widget">
+   <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {"symbols":[{"proName":"NSE:NIFTY","title":"NIFTY 50"},{"proName":"NSE:BANKNIFTY","title":"BANK NIFTY"},{"proName":"FOREXCOM:SPXUSD","title":"S&P 500"},{"proName":"NASDAQ:NDX","title":"NASDAQ 100"},{"proName":"TVC:DXY","title":"US Dollar Index"},{"proName":"TVC:USOIL","title":"Crude Oil"},{"proName":"TVC:GOLD","title":"Gold"}],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}
+    </script>
+   </div>
+  </div>
+ </section>
+ <section class="section">
+  <h2>Economic calendar</h2>
+  <div class="card widget">
+   <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+    {"colorTheme":"dark","isTransparent":true,"width":"100%","height":"450","locale":"en","importanceFilter":"-1,0,1","countryFilter":"us,eu,jp,cn,in"}
+    </script>
+   </div>
+  </div>
+ </section>
+ <section class="section">
+  <h2>Trader essentials</h2>
+  <div class="grid">
+   <div class="card"><div class="stat">Risk reminder</div><div class="value">Use a stop-loss</div><p>Define risk before entering a trade.</p></div>
+   <div class="card"><div class="stat">Data status</div><div class="value">Provider dependent</div><p>Check exchange timestamps and delays.</p></div>
+  </div>
+ </section>
+ <p class="note">This app is an informational dashboard, not investment advice. Widgets are third-party embeds. FII/DII cash-market flows and category-wise derivatives positioning are not included as verified live feeds in this starter.</p>
+</main>
+<footer>GLOBAL TRADER INTELLIGENCE · VERSION 1.0.0</footer>
+</body>
+</html>
