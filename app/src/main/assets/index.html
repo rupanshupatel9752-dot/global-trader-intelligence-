@@ -93,4 +93,5 @@ function refreshAll(){
 
 function saveSettings(){let s={refresh:document.getElementById('refreshRate').value,risk:document.getElementById('riskPct').value};try{localStorage.setItem('gtiSettings',JSON.stringify(s));document.getElementById('settingsMsg').textContent='Saved on this device.'}catch(e){document.getElementById('settingsMsg').textContent='Storage unavailable in this app session.'}}
 (function(){try{let s=JSON.parse(localStorage.getItem('gtiSettings')||'{}');if(s.refresh)document.getElementById('refreshRate').value=s.refresh;if(s.risk)document.getElementById('riskPct').value=s.risk}catch(e){}})();
+refreshAll();
 </script></body></html>
